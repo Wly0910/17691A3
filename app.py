@@ -1,12 +1,11 @@
 import streamlit as st
 import pandas as pd
-import pickle
+import joblib
 from sklearn.ensemble import RandomForestClassifier
 
 # 加载模型
 model_path = 'random_forest_model.pkl'
-with open(model_path, 'rb') as file:  # 使用 pickle 加载模型
-    model = pickle.load(file)
+model = joblib.load(model_path)
 
 def predict_storm(features):
     prediction = model.predict([features])
